@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Untitled</title>
+<title>Milestone 2-Copy1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13124,7 +13124,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Tutorial-Project">Tutorial Project<a class="anchor-link" href="#Tutorial-Project">&#182;</a></h1>
+<h1 id="Final-Tutorial">Final Tutorial<a class="anchor-link" href="#Final-Tutorial">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13138,10 +13138,10 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For my tutorial project for Introduction to Data Sconce, I plan to manipulate data related to statistics from matches of online multiplayer video games such as Overwatch, Dota 2, and Tom Clancy’s Rainbow Six Siege. There are vast amounts of data available to the public pertaining to individual matches, as well as aggregated data illustrating world averages and popular player preferences. Data biases in regard to the aggregated data can be avoided because this data is posted on multiple websites, so it is possible to find the true averages rather than any impossible inflated averages. Such sources that will be explored are the sites Winston’s Lab, DotaBuff, and R6Stats. These resources archive and publish legacy stats from past matches and are updated regularly with new match statistics, meaning the data is current; this means that the trends and observations gathered from the data do not have to be subjected to irrelevance.</p>
+<p>For my tutorial project for Introduction to Data Sconce, I plan to manipulate data related to statistics from one player's matches of the tenth season of ranked competitive play of the online multiplayer video game known as Overwatch a(dataset found on <a href="https://www.kaggle.com/simonho87/overwatch-ranked-data#season10.csv">Kaggle</a>). In general, there are vast amounts of data available to the public pertaining to individual matches, as well as aggregated data illustrating world averages and popular player preferences. Data biases in regard to the aggregated data can be avoided because this data is posted on multiple websites, so it is possible to find the true averages rather than any impossible inflated averages. Such sources that will be explored are the sites <a href="https://www.winstonslab.com/">Winston's Lab</a>, <a href="https://www.overbuff.com/">OverBuff</a>, and <a href="https://www.overwatchtracker.com/">OverwatchTracker</a>. These resources archive and publish legacy stats from past matches and are updated regularly with new match statistics, meaning the data is current; this means that the trends and observations gathered from the data do not have to be subjected to irrelevance.</p>
 <p>I plan to work on this project with respect to this class without a partner; however, it should be noted that the effort I put into the data collection and refinery is also going into my computer science capstone project for I will use the same dataset for both projects. I had initially intended going through the data pipeline process for these datasets with respect to the computer science capstone project, but I extended the idea to make it applicable for this course. Although I have two partners for the capstone project, I will be the primary data fetcher and manipulator.</p>
-<p>The reason as to why this dataset was chosen is because it is plentiful and robust. Each user has many variables including eliminating enemy units, healing friendly units, and participating at the objective location. Because every occurrence of the data is complete (meaning that there aren’t any missing data), these datasets can effectively be used to form observations and identify trends.</p>
-<p>As the data is accumulated, many questions can be posed. For example, “Which character has the highest win rate on average?”, “What map and team composition leads to higher percent win rate for a particular player?”, “Is there an observed damage to healing ratio that elevates a team’s odds at winning?”, etc. By taking into consideration such questions, the dataset is more manageable for there is a particular goal in mind amidst the vast amount of information. With respect to my dataset and the computer science capstone project, I aspire to observe similarities in several individual matches compared with the averages of the aggregated data to see if these trends withstand in a trial observation.</p>
+<p>The reason as to why this dataset was chosen is because it is plentiful and robust. Each player has many variables including eliminating enemy units, healing friendly units, and participating at the objective location. Because every occurrence of the data is complete (meaning that there aren’t any missing data), these datasets can effectively be used to form observations and identify trends.</p>
+<p>As the data is accumulated, many questions can be posed. For example, “Which character/role has the highest win rate on average?”, “What map and team composition leads to higher percent win rate for a particular player?”, “Is there an observed damage to healing ratio that elevates a team’s odds at winning?”, etc. By taking into consideration such questions, the dataset is more manageable for there is a particular goal in mind amidst the vast amount of information. With respect to my dataset and the computer science capstone project, I aspire to observe similarities in several individual matches compared with the averages of the aggregated data to see if these trends withstand in a trial observation.</p>
 <p>I have already begun making progress in accessing the sources which contain the match statistics. I plan to extract, transform, and load the data so it is in a more manageable format ready to be analyzed. I hope to be able to manipulate the match statistics such that trends and observations like win-rate potentials can be calculated before the end of future matches. I also hope to observe subtle nuances in the gameplay such that an ideal strategy can be formulated.</p>
 
 </div>
@@ -13154,15 +13154,1952 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dataset-Varables-Preliminary-Explantion">Dataset Varables Preliminary Explantion<a class="anchor-link" href="#Dataset-Varables-Preliminary-Explantion">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In brief, there are 31 heros (playable characters) grouped into the roles tank, damge, and support in Overwatch. A player is on a team with five other players and this six-person team versus an enemy six-person team. The objective is to either attck or defend a point on a variety of 17 maps accomplished thorugh the use of your abilities. Each hero has their own unique abilities that can either damage enemy heroes or heal or protect friendly heroes. To conquer a point, all enemies must be off of the between whether it be from luring them off of the point or killing them on the point. Contesting the point increases your objective time. For a team on defense, the attacking team needs to be fought off until the game ends when the game timer finishes. For the attacking team, the point must be won before the time limit reaches the end.</p>
+<p>A player can switch heroes at any point durng the match, and at the end of the match, a player's statistics are ranked with either a gold, silver, bronze medal to signify they either had the most, second most, or third most values for those statistics respectively. These statisitcs are eliminations (how many enemies you killed), objective kills (how many enemies you killed while contesting the point), objective time (how much time you spent contesting the point), damage (how much health points you deducted from enemies), and healing (how much healing you provided your teammates.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ETL-Dataset">ETL Dataset<a class="anchor-link" href="#ETL-Dataset">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To keep our data organized, let us keep all our imported libraries at the beginning. ALso, let us read in the CSV File found on <a href="https://www.kaggle.com/simonho87/overwatch-ranked-data#season10.csv">Kaggle</a> containing the personal match statistics of the first 99 games in the tenth season of Overwatch for an individual named Simon.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read in dataset</span>
+<span class="n">OW_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./Overwatch Ranked Stats.csv&#39;</span><span class="p">)</span>
+<span class="n">OW_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[46]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Game #</th>
+      <th>Start SR</th>
+      <th>End SR</th>
+      <th>SR Change</th>
+      <th>Team SR avg</th>
+      <th>Enemy SR avg</th>
+      <th>Team Stack</th>
+      <th>Enemy Stack</th>
+      <th>Role 1</th>
+      <th>Role 2</th>
+      <th>...</th>
+      <th>Obj_time_career</th>
+      <th>Obj_time_medal</th>
+      <th>Dmg</th>
+      <th>Dmg_career</th>
+      <th>Dmg_medal</th>
+      <th>Heal</th>
+      <th>Heal_career</th>
+      <th>Heal_medal</th>
+      <th>Death</th>
+      <th>Death_career</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>03:53</td>
+      <td>Gold</td>
+      <td>5074.0</td>
+      <td>6056.0</td>
+      <td>None</td>
+      <td>8074.0</td>
+      <td>9636.0</td>
+      <td>Silver</td>
+      <td>6.0</td>
+      <td>7.16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>4</td>
+      <td>5</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:26</td>
+      <td>Gold</td>
+      <td>2257.0</td>
+      <td>4893.0</td>
+      <td>Gold</td>
+      <td>4461.0</td>
+      <td>8367.0</td>
+      <td>Gold</td>
+      <td>8.0</td>
+      <td>9.34</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:48</td>
+      <td>None</td>
+      <td>7610.0</td>
+      <td>5414.0</td>
+      <td>None</td>
+      <td>2132.0</td>
+      <td>5315.0</td>
+      <td>Bronze</td>
+      <td>10.0</td>
+      <td>8.70</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>Offense</td>
+      <td>...</td>
+      <td>02:07</td>
+      <td>Gold</td>
+      <td>7458.0</td>
+      <td>5396.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>3533.0</td>
+      <td>None</td>
+      <td>16.0</td>
+      <td>9.64</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>Tank</td>
+      <td>...</td>
+      <td>02:01</td>
+      <td>Bronze</td>
+      <td>2736.0</td>
+      <td>4890.0</td>
+      <td>None</td>
+      <td>3340.0</td>
+      <td>3503.0</td>
+      <td>Silver</td>
+      <td>5.0</td>
+      <td>8.75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Gold</td>
+      <td>1332.0</td>
+      <td>4309.0</td>
+      <td>None</td>
+      <td>7231.0</td>
+      <td>4109.0</td>
+      <td>Silver</td>
+      <td>10.0</td>
+      <td>8.95</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>3</td>
+      <td>5</td>
+      <td>Defense</td>
+      <td>Tank</td>
+      <td>...</td>
+      <td>01:44</td>
+      <td>None</td>
+      <td>8076.0</td>
+      <td>4697.0</td>
+      <td>Bronze</td>
+      <td>0.0</td>
+      <td>3432.0</td>
+      <td>None</td>
+      <td>10.0</td>
+      <td>8.84</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>03:22</td>
+      <td>Gold</td>
+      <td>5460.0</td>
+      <td>4768.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>9.0</td>
+      <td>8.57</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>P</td>
+      <td>P</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:45</td>
+      <td>Silver</td>
+      <td>3458.0</td>
+      <td>2434.0</td>
+      <td>None</td>
+      <td>5106.0</td>
+      <td>5387.0</td>
+      <td>Silver</td>
+      <td>5.0</td>
+      <td>6.27</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>P</td>
+      <td>2414</td>
+      <td>NaN</td>
+      <td>P</td>
+      <td>P</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:06</td>
+      <td>Silver</td>
+      <td>5805.0</td>
+      <td>4391.0</td>
+      <td>None</td>
+      <td>14575.0</td>
+      <td>4004.0</td>
+      <td>Silver</td>
+      <td>13.0</td>
+      <td>8.20</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>2414</td>
+      <td>2388</td>
+      <td>-26.0</td>
+      <td>2363</td>
+      <td>2363</td>
+      <td>4</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:58</td>
+      <td>Silver</td>
+      <td>9310.0</td>
+      <td>4433.0</td>
+      <td>None</td>
+      <td>12353.0</td>
+      <td>4334.0</td>
+      <td>Gold</td>
+      <td>19.0</td>
+      <td>8.40</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>2388</td>
+      <td>2388</td>
+      <td>0.0</td>
+      <td>2355</td>
+      <td>2365</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>Defense</td>
+      <td>...</td>
+      <td>01:59</td>
+      <td>None</td>
+      <td>12659.0</td>
+      <td>4736.0</td>
+      <td>Silver</td>
+      <td>5858.0</td>
+      <td>4197.0</td>
+      <td>None</td>
+      <td>12.0</td>
+      <td>8.18</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>2388</td>
+      <td>2367</td>
+      <td>-21.0</td>
+      <td>2244</td>
+      <td>2243</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:53</td>
+      <td>Gold</td>
+      <td>3899.0</td>
+      <td>4673.0</td>
+      <td>Silver</td>
+      <td>10583.0</td>
+      <td>4584.0</td>
+      <td>Gold</td>
+      <td>8.0</td>
+      <td>8.15</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>2367</td>
+      <td>2387</td>
+      <td>20.0</td>
+      <td>2341</td>
+      <td>2328</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:23</td>
+      <td>Bronze</td>
+      <td>7186.0</td>
+      <td>5231.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>11.0</td>
+      <td>8.68</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>2387</td>
+      <td>2363</td>
+      <td>-24.0</td>
+      <td>2363</td>
+      <td>2372</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:50</td>
+      <td>Silver</td>
+      <td>2737.0</td>
+      <td>4771.0</td>
+      <td>Bronze</td>
+      <td>5223.0</td>
+      <td>4428.0</td>
+      <td>Silver</td>
+      <td>5.0</td>
+      <td>8.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>2363</td>
+      <td>2340</td>
+      <td>-23.0</td>
+      <td>2356</td>
+      <td>2362</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:45</td>
+      <td>Silver</td>
+      <td>3527.0</td>
+      <td>4593.0</td>
+      <td>None</td>
+      <td>11179.0</td>
+      <td>4672.0</td>
+      <td>Gold</td>
+      <td>11.0</td>
+      <td>8.19</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>2340</td>
+      <td>2363</td>
+      <td>23.0</td>
+      <td>2347</td>
+      <td>2329</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:49</td>
+      <td>Silver</td>
+      <td>1822.0</td>
+      <td>4483.0</td>
+      <td>None</td>
+      <td>8187.0</td>
+      <td>4875.0</td>
+      <td>Silver</td>
+      <td>3.0</td>
+      <td>7.98</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>2363</td>
+      <td>2337</td>
+      <td>-26.0</td>
+      <td>2356</td>
+      <td>2347</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:48</td>
+      <td>Bronze</td>
+      <td>6462.0</td>
+      <td>4484.0</td>
+      <td>None</td>
+      <td>11876.0</td>
+      <td>5099.0</td>
+      <td>Silver</td>
+      <td>14.0</td>
+      <td>8.10</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>2337</td>
+      <td>2361</td>
+      <td>24.0</td>
+      <td>2292</td>
+      <td>2292</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:01</td>
+      <td>None</td>
+      <td>12837.0</td>
+      <td>6387.0</td>
+      <td>Silver</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>15.0</td>
+      <td>9.09</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>2361</td>
+      <td>2339</td>
+      <td>-22.0</td>
+      <td>2343</td>
+      <td>2343</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:45</td>
+      <td>Gold</td>
+      <td>2193.0</td>
+      <td>4700.0</td>
+      <td>None</td>
+      <td>693.0</td>
+      <td>4657.0</td>
+      <td>Bronze</td>
+      <td>6.0</td>
+      <td>8.23</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>2339</td>
+      <td>2364</td>
+      <td>25.0</td>
+      <td>2340</td>
+      <td>2336</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:42</td>
+      <td>Silver</td>
+      <td>4917.0</td>
+      <td>4646.0</td>
+      <td>None</td>
+      <td>7702.0</td>
+      <td>4716.0</td>
+      <td>Gold</td>
+      <td>8.0</td>
+      <td>8.11</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>2364</td>
+      <td>2391</td>
+      <td>27.0</td>
+      <td>2384</td>
+      <td>2384</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>00:53</td>
+      <td>None</td>
+      <td>2423.0</td>
+      <td>3147.0</td>
+      <td>None</td>
+      <td>4315.0</td>
+      <td>5294.0</td>
+      <td>Silver</td>
+      <td>2.0</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>2391</td>
+      <td>2416</td>
+      <td>25.0</td>
+      <td>2380</td>
+      <td>2383</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:13</td>
+      <td>Silver</td>
+      <td>2515.0</td>
+      <td>3891.0</td>
+      <td>None</td>
+      <td>5681.0</td>
+      <td>8482.0</td>
+      <td>Gold</td>
+      <td>2.0</td>
+      <td>8.34</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>2416</td>
+      <td>2391</td>
+      <td>-25.0</td>
+      <td>2466</td>
+      <td>2431</td>
+      <td>2</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:14</td>
+      <td>Gold</td>
+      <td>5357.0</td>
+      <td>5602.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>15.0</td>
+      <td>9.26</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>2391</td>
+      <td>2416</td>
+      <td>25.0</td>
+      <td>2363</td>
+      <td>2359</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Silver</td>
+      <td>6678.0</td>
+      <td>4560.0</td>
+      <td>None</td>
+      <td>2994.0</td>
+      <td>4484.0</td>
+      <td>Bronze</td>
+      <td>5.0</td>
+      <td>7.77</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>2416</td>
+      <td>2391</td>
+      <td>-25.0</td>
+      <td>2431</td>
+      <td>2435</td>
+      <td>4</td>
+      <td>3</td>
+      <td>Defense</td>
+      <td>Offense</td>
+      <td>...</td>
+      <td>01:46</td>
+      <td>None</td>
+      <td>9594.0</td>
+      <td>4700.0</td>
+      <td>Gold</td>
+      <td>0.0</td>
+      <td>4312.0</td>
+      <td>None</td>
+      <td>15.0</td>
+      <td>7.97</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>2391</td>
+      <td>2368</td>
+      <td>-23.0</td>
+      <td>2356</td>
+      <td>2360</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Tank</td>
+      <td>Support</td>
+      <td>...</td>
+      <td>01:49</td>
+      <td>Gold</td>
+      <td>10521.0</td>
+      <td>4729.0</td>
+      <td>None</td>
+      <td>12149.0</td>
+      <td>4415.0</td>
+      <td>Silver</td>
+      <td>15.0</td>
+      <td>7.93</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>2368</td>
+      <td>2346</td>
+      <td>-22.0</td>
+      <td>2342</td>
+      <td>P</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Gold</td>
+      <td>7022.0</td>
+      <td>4708.0</td>
+      <td>None</td>
+      <td>8191.0</td>
+      <td>4444.0</td>
+      <td>Silver</td>
+      <td>15.0</td>
+      <td>7.99</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>2346</td>
+      <td>2370</td>
+      <td>24.0</td>
+      <td>2362</td>
+      <td>2360</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:49</td>
+      <td>Gold</td>
+      <td>7154.0</td>
+      <td>4741.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>4285.0</td>
+      <td>None</td>
+      <td>9.0</td>
+      <td>7.95</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>2370</td>
+      <td>2346</td>
+      <td>-24.0</td>
+      <td>2348</td>
+      <td>2362</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>Gold</td>
+      <td>12730.0</td>
+      <td>4816.0</td>
+      <td>Bronze</td>
+      <td>0.0</td>
+      <td>4046.0</td>
+      <td>None</td>
+      <td>15.0</td>
+      <td>7.91</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>70</td>
+      <td>2614</td>
+      <td>2593</td>
+      <td>-21.0</td>
+      <td>2719</td>
+      <td>2713</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:53</td>
+      <td>Silver</td>
+      <td>5450.0</td>
+      <td>5101.0</td>
+      <td>None</td>
+      <td>12774.0</td>
+      <td>4309.0</td>
+      <td>Gold</td>
+      <td>9.0</td>
+      <td>7.45</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>71</td>
+      <td>2593</td>
+      <td>2615</td>
+      <td>22.0</td>
+      <td>2632</td>
+      <td>2638</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>None</td>
+      <td>1360.0</td>
+      <td>5051.0</td>
+      <td>None</td>
+      <td>9971.0</td>
+      <td>4366.0</td>
+      <td>Gold</td>
+      <td>8.0</td>
+      <td>7.44</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>72</td>
+      <td>2615</td>
+      <td>2634</td>
+      <td>19.0</td>
+      <td>2660</td>
+      <td>2661</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>73</td>
+      <td>2634</td>
+      <td>2612</td>
+      <td>-22.0</td>
+      <td>2717</td>
+      <td>2717</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>Defense</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Gold</td>
+      <td>7929.0</td>
+      <td>5036.0</td>
+      <td>None</td>
+      <td>2279.0</td>
+      <td>4313.0</td>
+      <td>Bronze</td>
+      <td>13.0</td>
+      <td>7.45</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>74</td>
+      <td>2612</td>
+      <td>2637</td>
+      <td>25.0</td>
+      <td>2641</td>
+      <td>2644</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Gold</td>
+      <td>4007.0</td>
+      <td>5029.0</td>
+      <td>Bronze</td>
+      <td>0.0</td>
+      <td>4269.0</td>
+      <td>None</td>
+      <td>6.0</td>
+      <td>7.44</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>75</td>
+      <td>2637</td>
+      <td>2662</td>
+      <td>25.0</td>
+      <td>2688</td>
+      <td>2687</td>
+      <td>2</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Gold</td>
+      <td>7282.0</td>
+      <td>5024.0</td>
+      <td>None</td>
+      <td>12537.0</td>
+      <td>4334.0</td>
+      <td>Silver</td>
+      <td>11.0</td>
+      <td>7.44</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>76</td>
+      <td>2662</td>
+      <td>2638</td>
+      <td>-24.0</td>
+      <td>2710</td>
+      <td>P</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Bronze</td>
+      <td>4445.0</td>
+      <td>5006.0</td>
+      <td>None</td>
+      <td>9593.0</td>
+      <td>4379.0</td>
+      <td>Silver</td>
+      <td>10.0</td>
+      <td>7.45</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>77</td>
+      <td>2638</td>
+      <td>2613</td>
+      <td>-25.0</td>
+      <td>2761</td>
+      <td>2757</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>Gold</td>
+      <td>4039.0</td>
+      <td>4972.0</td>
+      <td>None</td>
+      <td>10495.0</td>
+      <td>4422.0</td>
+      <td>Gold</td>
+      <td>8.0</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>78</td>
+      <td>2613</td>
+      <td>2635</td>
+      <td>22.0</td>
+      <td>2593</td>
+      <td>2577</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:08</td>
+      <td>Bronze</td>
+      <td>6954.0</td>
+      <td>6105.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>10.0</td>
+      <td>7.85</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>79</td>
+      <td>2635</td>
+      <td>2656</td>
+      <td>21.0</td>
+      <td>2651</td>
+      <td>2648</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>Silver</td>
+      <td>5437.0</td>
+      <td>4951.0</td>
+      <td>None</td>
+      <td>9800.0</td>
+      <td>4391.0</td>
+      <td>Silver</td>
+      <td>14.0</td>
+      <td>7.44</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>80</td>
+      <td>2656</td>
+      <td>2631</td>
+      <td>-25.0</td>
+      <td>2686</td>
+      <td>2708</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>Silver</td>
+      <td>7398.0</td>
+      <td>4957.0</td>
+      <td>None</td>
+      <td>1412.0</td>
+      <td>4345.0</td>
+      <td>Bronze</td>
+      <td>8.0</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>81</td>
+      <td>2631</td>
+      <td>2607</td>
+      <td>-24.0</td>
+      <td>2594</td>
+      <td>P</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>Offense</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>None</td>
+      <td>2104.0</td>
+      <td>4948.0</td>
+      <td>Bronze</td>
+      <td>6831.0</td>
+      <td>4387.0</td>
+      <td>Gold</td>
+      <td>5.0</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>82</td>
+      <td>2607</td>
+      <td>2630</td>
+      <td>23.0</td>
+      <td>2623</td>
+      <td>2624</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Bronze</td>
+      <td>160.0</td>
+      <td>4922.0</td>
+      <td>None</td>
+      <td>4852.0</td>
+      <td>4410.0</td>
+      <td>Gold</td>
+      <td>2.0</td>
+      <td>7.40</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>83</td>
+      <td>2630</td>
+      <td>2655</td>
+      <td>25.0</td>
+      <td>2664</td>
+      <td>2642</td>
+      <td>4</td>
+      <td>5</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:15</td>
+      <td>Gold</td>
+      <td>9534.0</td>
+      <td>6149.0</td>
+      <td>Bronze</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>6.0</td>
+      <td>7.66</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>84</td>
+      <td>2655</td>
+      <td>2679</td>
+      <td>24.0</td>
+      <td>2696</td>
+      <td>2695</td>
+      <td>3</td>
+      <td>4</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:52</td>
+      <td>Silver</td>
+      <td>4161.0</td>
+      <td>4940.0</td>
+      <td>None</td>
+      <td>5897.0</td>
+      <td>4365.0</td>
+      <td>Silver</td>
+      <td>8.0</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>85</td>
+      <td>2679</td>
+      <td>2656</td>
+      <td>-23.0</td>
+      <td>2693</td>
+      <td>2693</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:16</td>
+      <td>Bronze</td>
+      <td>2767.0</td>
+      <td>3829.0</td>
+      <td>None</td>
+      <td>4797.0</td>
+      <td>7677.0</td>
+      <td>Silver</td>
+      <td>6.0</td>
+      <td>8.29</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>86</td>
+      <td>2656</td>
+      <td>2678</td>
+      <td>22.0</td>
+      <td>2632</td>
+      <td>P</td>
+      <td>4</td>
+      <td>3</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>Gold</td>
+      <td>9973.0</td>
+      <td>4976.0</td>
+      <td>Silver</td>
+      <td>0.0</td>
+      <td>4335.0</td>
+      <td>None</td>
+      <td>8.0</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>87</td>
+      <td>2678</td>
+      <td>2652</td>
+      <td>-26.0</td>
+      <td>2626</td>
+      <td>2596</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Tank</td>
+      <td>Offense</td>
+      <td>...</td>
+      <td>01:51</td>
+      <td>None</td>
+      <td>7659.0</td>
+      <td>4976.0</td>
+      <td>None</td>
+      <td>882.0</td>
+      <td>4281.0</td>
+      <td>None</td>
+      <td>10.0</td>
+      <td>7.36</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>88</td>
+      <td>2652</td>
+      <td>2675</td>
+      <td>23.0</td>
+      <td>2642</td>
+      <td>2646</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>02:09</td>
+      <td>Gold</td>
+      <td>6691.0</td>
+      <td>6307.0</td>
+      <td>Silver</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>7.0</td>
+      <td>7.64</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>89</td>
+      <td>2675</td>
+      <td>2650</td>
+      <td>-25.0</td>
+      <td>2664</td>
+      <td>2655</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:50</td>
+      <td>Bronze</td>
+      <td>3942.0</td>
+      <td>4990.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>4208.0</td>
+      <td>None</td>
+      <td>10.0</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>90</td>
+      <td>2650</td>
+      <td>2672</td>
+      <td>22.0</td>
+      <td>2655</td>
+      <td>2655</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:50</td>
+      <td>None</td>
+      <td>2964.0</td>
+      <td>4961.0</td>
+      <td>None</td>
+      <td>7984.0</td>
+      <td>4234.0</td>
+      <td>Silver</td>
+      <td>11.0</td>
+      <td>7.41</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>91</td>
+      <td>2672</td>
+      <td>2649</td>
+      <td>-23.0</td>
+      <td>2638</td>
+      <td>2640</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>Tank</td>
+      <td>...</td>
+      <td>01:49</td>
+      <td>Gold</td>
+      <td>2388.0</td>
+      <td>4954.0</td>
+      <td>Bronze</td>
+      <td>262.0</td>
+      <td>4212.0</td>
+      <td>None</td>
+      <td>6.0</td>
+      <td>7.42</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>92</td>
+      <td>2649</td>
+      <td>2623</td>
+      <td>-26.0</td>
+      <td>2637</td>
+      <td>2648</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:48</td>
+      <td>Gold</td>
+      <td>3527.0</td>
+      <td>4931.0</td>
+      <td>None</td>
+      <td>9359.0</td>
+      <td>4250.0</td>
+      <td>Silver</td>
+      <td>6.0</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>93</td>
+      <td>2623</td>
+      <td>2600</td>
+      <td>-23.0</td>
+      <td>2595</td>
+      <td>2600</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:48</td>
+      <td>Bronze</td>
+      <td>6230.0</td>
+      <td>4913.0</td>
+      <td>None</td>
+      <td>15533.0</td>
+      <td>4323.0</td>
+      <td>Gold</td>
+      <td>12.0</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>94</td>
+      <td>2600</td>
+      <td>2575</td>
+      <td>-25.0</td>
+      <td>2593</td>
+      <td>2586</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Tank</td>
+      <td>Support</td>
+      <td>...</td>
+      <td>01:48</td>
+      <td>None</td>
+      <td>3038.0</td>
+      <td>4915.0</td>
+      <td>None</td>
+      <td>2640.0</td>
+      <td>4325.0</td>
+      <td>Gold</td>
+      <td>6.0</td>
+      <td>7.40</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>95</td>
+      <td>2575</td>
+      <td>2598</td>
+      <td>23.0</td>
+      <td>2592</td>
+      <td>2596</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Silver</td>
+      <td>4697.0</td>
+      <td>4892.0</td>
+      <td>None</td>
+      <td>12928.0</td>
+      <td>4381.0</td>
+      <td>Silver</td>
+      <td>9.0</td>
+      <td>7.39</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>96</td>
+      <td>2598</td>
+      <td>2617</td>
+      <td>19.0</td>
+      <td>2585</td>
+      <td>2553</td>
+      <td>2</td>
+      <td>4</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>None</td>
+      <td>2866.0</td>
+      <td>4872.0</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>4341.0</td>
+      <td>None</td>
+      <td>6.0</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>97</td>
+      <td>2617</td>
+      <td>2593</td>
+      <td>-24.0</td>
+      <td>2596</td>
+      <td>2603</td>
+      <td>3</td>
+      <td>4</td>
+      <td>Tank</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Silver</td>
+      <td>7549.0</td>
+      <td>4883.0</td>
+      <td>Bronze</td>
+      <td>0.0</td>
+      <td>4294.0</td>
+      <td>None</td>
+      <td>11.0</td>
+      <td>7.38</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>98</td>
+      <td>2593</td>
+      <td>2569</td>
+      <td>-24.0</td>
+      <td>2585</td>
+      <td>2588</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Support</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>Silver</td>
+      <td>6147.0</td>
+      <td>4889.0</td>
+      <td>Bronze</td>
+      <td>6793.0</td>
+      <td>4310.0</td>
+      <td>Gold</td>
+      <td>10.0</td>
+      <td>7.40</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>99</td>
+      <td>2569</td>
+      <td>2543</td>
+      <td>-26.0</td>
+      <td>P</td>
+      <td>2577</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Support</td>
+      <td>Offense</td>
+      <td>...</td>
+      <td>01:47</td>
+      <td>None</td>
+      <td>7635.0</td>
+      <td>4904.0</td>
+      <td>Bronze</td>
+      <td>3760.0</td>
+      <td>4299.0</td>
+      <td>Bronze</td>
+      <td>11.0</td>
+      <td>7.42</td>
+    </tr>
+  </tbody>
+</table>
+<p>99 rows × 32 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Determine that dtypes were inferred properly</span>
+<span class="n">OW_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[47]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Game #                int64
+Start SR             object
+End SR               object
+SR Change           float64
+Team SR avg          object
+Enemy SR avg         object
+Team Stack            int64
+Enemy Stack           int64
+Role 1               object
+Role 2               object
+Result               object
+Streak                int64
+Leaver               object
+Map                  object
+Match Time           object
+Elim                float64
+Elim_career         float64
+Elim_medal           object
+Obj_kills           float64
+Obj_kills_career    float64
+Obj_kills_medal      object
+Obj_time             object
+Obj_time_career      object
+Obj_time_medal       object
+Dmg                 float64
+Dmg_career          float64
+Dmg_medal            object
+Heal                float64
+Heal_career         float64
+Heal_medal           object
+Death               float64
+Death_career        float64
+dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dtypes for the data are adequate for our purposes. All numerical data is considered as either float64 or int64 class whereas non-numerical data is considered as object class.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Analyze-Data">Analyze Data<a class="anchor-link" href="#Analyze-Data">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Number-of-Medals">Number of Medals<a class="anchor-link" href="#Number-of-Medals">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">medals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;Bronze&#39;</span><span class="p">,</span> <span class="s1">&#39;Silver&#39;</span><span class="p">,</span> <span class="s1">&#39;Gold&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Graph of elimination medals</span>
+<span class="n">elim_medal</span> <span class="o">=</span> <span class="n">OW_df</span><span class="p">[</span><span class="s1">&#39;Elim_medal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Elimination Medals&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">damage_medal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Medals&#39;</span><span class="p">)</span>
+<span class="n">damage_medal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type of Medal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[77]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 17.199999999999996, &#39;Type of Medal&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Graph of objective elimination medals</span>
+<span class="n">obj_elim_medal</span> <span class="o">=</span> <span class="n">OW_df</span><span class="p">[</span><span class="s1">&#39;Obj_kills_medal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Objective Elimination Medals&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">obj_elim_medal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Medals&#39;</span><span class="p">)</span>
+<span class="n">obj_elim_medal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type of Medal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[78]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 0, &#39;Type of Medal&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAEvCAYAAABCCKquAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4xLjEsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy8QZhcZAAAfMUlEQVR4nO3deZgcZb328e/NJsgqJGBYYlBBRZGAARE9gmwHcGFRUERE5RhQVFRcEFHx6HtcUTmKSHxRcWMXBA8oyBGQAyIBAhKWg/gGCAlkAWURkeV+/6hq6AwzPZ2Zqa701P25rr6666ntNzUzv37qqaeekm0iIqI5lqs7gIiI6K0k/oiIhknij4homCT+iIiGSeKPiGiYJP6IiIZJ4o+nSDpG0k87zJ8taYcK9lvJdofZ548kfbH8/C+Sbh3hdiZLekjS8mMb4VPb7/mxGQ1JcyTt3OWylvTCqmOKZ0ribxBJ75L0J0l/l3SPpBMkrdXt+rZfavuSUcbwVMIdy+0Osp8pZWJ5aMDrrQOXtf172y8ayX5s32l7NdtPjEHMPTk25b4uKY/PFgPKzynLdxjrfcayI4m/ISQdAXwF+DiwJrAt8DzgIkkr1RlbxdYqE3PrdVrdAS1D/hd4Z2tC0joUfxcLa4soeiKJvwEkrQF8Hvig7V/bfsz2HGA/iuT/jrbFV5Z0mqQHJV3bXiNsP42XtJykIyXdLmmxpNMlrd227GskXSHpr5LuKs82pgMHAJ8oa9/ntW9X0vqSHhmwnS0lLZK0Yjn9Hkk3S7pf0m8kPW8Mjs8OkuYO+Dk/LukGSQ9LOknSepIuKI/LbyU9p1y2dWaxQjl9iaQvSPqfctkLJU1o2/YZ5dnW3yRdJumlZXnHY1N+fpakb0maV76+JelZ7T+DpCMkLZA0X9K7h/nRfwa8ta2Zan/gbOCfbfEO93s+UNId5bxPDziu20i6svwbmC/pO0NVMiTtIemm8pjdLeljw8Qeo5DE3wzbASsDv2gvtP0QcAGwS1vxnsAZwNrAz4FzWkl3gA8BewHbA+sD9wPHQ9HuXW7328BEYCowy/YMimTz1bL2/cYB8cwDrgTe3Fb8duBM249J2gs4Ctin3O7vgVOW6kh0780Ux2VT4I3lz3MUMIHi/+ZDHdZ9O/BuYF1gJaA9iV0AbFLOu5bieDDcsSl9mqJGPhXYAtgGOLpt/nMpzuY2AA4Gjm99QQ1hHnATsGs5/U7gxwOW6fR73gw4ATiwnLcOsGHbuk8AH6E4Zq8CdgLeP0QsJwGH2F4deBnw3x3ijlFK4m+GCcAi248PMm9+Ob/lGttn2n4M+AbFF8a2g6x3CPBp23NtPwocA7ylrPkeAPzW9inl2cVi27O6jPXnFDVPJAl4W1nW2ueXbN9c/iz/AUwdpta/qKxxtl4v6TKOb9u+1/bdFF8wV9m+rvxZzwa27LDuD23/r+1HgNMpEjUAtn9g+8G2Y7aFpDW7jOkA4N9tL7C9kOIs7sC2+Y+V8x+zfT7wEDDctYsfA++U9CKKZrErB8zv9Ht+C/Ar25eV8z4DPNn2s15j+w+2Hy/PME+k+AIZzGPAZpLWsH2/7WuHOxgxckn8zbAImNBqjhhgUjm/5a7WB9tPAnMpanMDPQ84u5VQgZspanjrARsBt48w1jOBV0laH3gtYIrE29rncW37vA8QRQ13KBNsr9X2urnLOO5t+/zIINOrdVj3nrbPf28tK2l5SV8um00eAOa0YuwypvWBO9qm72DJ383iAV/uT+27g18AOwIfBH4yyPxOv+f1WfLv5WFgcWta0qaSflU2bT1A8UU91M/6ZmAP4A5Jl0p61TBxxygk8TfDlcCjFE0kT5G0KrA7cHFb8UZt85ejOHWfN8g27wJ2H5BUVy5ryHcBLxgilo7Dwdr+K3AhxfWHtwOn+OkhZO+iaA5o3+cqtq/otM1lyNspmtJ2pmiSmVKWq3wfbqjceRSJuGUyg/9uumb77xTNT+9j8MTf6fc8nyX/Xp5N0dzTcgJwC7CJ7TUomsrEIGxfbXtPiiawcyjOlKIiSfwNYPtvFM0C35a0m6QVJU2haMufy5L/8K+QtE95dvBhii+MPwyy2e8B/6fVzCJpoqQ9y3k/A3aWtJ+kFSStI6nV3HEv8PxhQv45RXvzm3m6mae1z0+1XRBdU9K+XRyCZcXqFMdzMfBsihpwu+GOzSnA0eWxngB8FhjyvoulcBSwfdkcM1Cn3/OZwBtUXMhfCfh3lswpqwMPAA9JejHFl8szSFpJ0gGS1iybGB+gOKuIiiTxN4Ttr1L8g3+d4h/rKora3E5l+2zLL4G3UlzEOxDYp/xnHOg44FzgQkkPUnw5vLLc150Up+1HUDTHzKK4GAnFRbzNyqaDc4YI91yKC6D32r6+7Wc4m6JL6qll08GNFGcsnfxVS/bj/+gwy1fpxxTNM3dTXFQd+IU63LH5IjATuAH4E8XF4S8OstxSsT3P9uVDzO70e54NHEbx5Tyf4m9mbtu6H6M4y3kQ+D7QqSvtgcCc8vd6KEv2NIsxpjyIJbol6U7gHbYvqzuWiBi51PijK5ImUnShnFNzKBExSkn8MSxJWwO3UXRxvLPueCJidNLUExHRMKnxR0Q0TBJ/RETDDHYn5zJnwoQJnjJlSt1hRET0lWuuuWaR7YkDy/si8U+ZMoWZM2fWHUZERF+RdMdg5WnqiYhomCT+iIiGSeKPiGiYJP6IiIZJ4o+IaJgk/oiIhknij4homCT+iIiG6YsbuKpQPMd72ZdB9CJirKXGHxHRMEn8ERENk8QfEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMEn8ERENk8QfEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMEn8ERENU1nil7SypD9Kul7SbEmfL8vXlnSRpNvK9+dUFUNERDxTlTX+R4EdbW8BTAV2k7QtcCRwse1NgIvL6YiI6JHKEr8LD5WTK5YvA3sCJ5flJwN7VRVDREQ8U6Vt/JKWlzQLWABcZPsqYD3b8wHK93WrjCEiIpZUaeK3/YTtqcCGwDaSXtbtupKmS5opaebChQurCzIiomF60qvH9l+BS4DdgHslTQIo3xcMsc4M29NsT5s4cWIvwoyIaIQqe/VMlLRW+XkVYGfgFuBc4KBysYOAX1YVQ0REPNMKFW57EnCypOUpvmBOt/0rSVcCp0s6GLgT2LfCGCIiYoDKEr/tG4AtBylfDOxU1X4jIqKz3LkbEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMEn8ERENk8QfEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMEn8ERENk8QfEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMEn8ERENk8QfEdEwSfwREQ2TxB8R0TBJ/BERDZPEHxHRMJUlfkkbSfqdpJslzZZ0eFl+jKS7Jc0qX3tUFUNERDzTChVu+3HgCNvXSloduEbSReW8b9r+eoX7joiIIVSW+G3PB+aXnx+UdDOwQVX7i4iI7vSkjV/SFGBL4Kqy6AOSbpD0A0nPGWKd6ZJmSpq5cOHCXoQZEdEIlSd+SasBZwEftv0AcALwAmAqxRnBsYOtZ3uG7Wm2p02cOLHqMCMiGqPSxC9pRYqk/zPbvwCwfa/tJ2w/CXwf2KbKGCIiYklV9uoRcBJws+1vtJVPaltsb+DGqmKIiIhnqrJXz6uBA4E/SZpVlh0F7C9pKmBgDnBIhTFERMQAwyZ+SfsCvy575hwNbAV80fa1ndazfTmgQWadP6JIIyJiTHTT1POZMum/BvhX4GSKC7QREdGHukn8T5TvrwdOsP1LYKXqQoqIiCp1k/jvlnQisB9wvqRndbleREQsg7pJ4PsBvwF2s/1XYG3g45VGFRERlRny4q6ktdsmL2krexSYWW1YERFRlU69eq6h6HKptvcWA8+vMK6IiKjIkInf9sa9DCQiInqjqxu4yoHUNgFWbpXZvqyqoCKa7NJLL607hK5sv/32dYcQI9TNDVz/BhwObAjMArYFrgR2rDa0iIioQje9eg4HtgbusP06iuGVM05yRESf6ibx/8P2PwAkPcv2LcCLqg0rIiKq0k0b/1xJawHnABdJuh+YV21YERFRlWETv+29y4/HSPodsCbw60qjioiIynR7A1fLn8r31YD7KokoIiIq1e0NXJOB+8vPawF3AunnHxHRh4a8uGt7Y9vPpxin5422J9heB3gD8IteBRgREWOrm149W9t+6uEpti8AcudGRESf6qZXz6LyyVs/pWj6eQewuNKoIiKiMt3U+PcHJgJnl6+JZVlERPShbrpz3gccLmk12w/1IKboQz9/6UvrDmFYb589u+4QohaDPfp7WeSe7WnYGr+k7STdBNxUTm8h6buVRxYREZXopqnnmxQPWV8MYPt64LVVBhUREdXp6tm5tu8aUPTEoAu2kbSRpN9JulnSbEmHl+VrS7pI0m3l+3NGEHdERIxQN4n/LknbAZa0kqSPATd3sd7jwBG2X0IxlPNhkjYDjgQutr0JcHE5HRERPdJN4j8UOAzYAJgLTC2nO7I93/a15ecHKb4sNgD2BE4uFzsZ2Gvpw46IiJHqplfPIuCA0exE0hSKcfyvAtazPb/c9nxJ645m2xERsXQ6DdL2n51WtP2hbnYgaTXgLODDth+QuutaJWk6MB1g8uTJXa0TERHD61TjPxS4ETidYvz9pe4MK2lFiqT/M9ut8X3ulTSprO1PAhYMtq7tGcAMgGnTpvWug2tExDjXKfFPAvYF3kpxofY04Czb93ezYRVV+5OAm21/o23WucBBwJfL91+OIO6IiBihTqNzLrb9vfI5u++iGI55tqQDu9z2q4EDgR0lzSpfe1Ak/F0k3QbsUk5HRESPDHtxV9JWFGPz7AJcQDFO/7BsX87QzUM7dRtgRESMrU4Xdz9PMfb+zcCpwKdsP96rwCIiohqdavyfAf4CbFG+/qPskSPAtl9efXgRETHWOiX+PFoxImIcGjLx276jl4FERERvdDVIW0REjB9J/BERDTNk4pd0cfn+ld6FExERVet4566k7YE3STqVAX3yWyNvRkREf+mU+D9LMVb+hsA3BswzsGNVQUVERHU69eo5EzhT0mdsf6GHMUVERIW6GY//C5LexNPP2b3E9q+qDSsiIqoybK8eSV8CDgduKl+Hl2UREdGHhq3xA68Hptp+EkDSycB1wKeqDCwiIqrRbT/+tdo+r1lFIBER0Rvd1Pi/BFwn6XcUXTpfS2r7ERF9q5uLu6dIugTYmiLxf9L2PVUHFhER1eimxo/t+RSPTIyIiD6XsXoiIhomiT8iomE6Jn5Jy0m6sVfBRERE9Tom/rLv/vWSJvconoiIqFg3F3cnAbMl/RF4uFVo+02VRRUREZXpJvF/vvIoIiKiZ4a9uGv7UmAOsGL5+Wpg2LH4Jf1A0oL2awSSjpF0t6RZ5WuPUcQeEREj0M0gbe8FzgROLIs2AM7pYts/AnYbpPybtqeWr/O7DTQiIsZGN905DwNeDTwAYPs2YN3hVrJ9GXDfqKKLiIgx103if9T2P1sTklageALXSH1A0g1lU9BzhlpI0nRJMyXNXLhw4Sh2FxER7bpJ/JdKOgpYRdIuwBnAeSPc3wnAC4CpwHzg2KEWtD3D9jTb0yZOnDjC3UVExEDdJP4jgYXAn4BDgPOBo0eyM9v32n6ivD/g+8A2I9lORESMXDejcz5ZPnzlKoomnlttj6ipR9KkcsA3gL2B3BUcEdFjwyZ+Sa8HvgfcTjEs88aSDrF9wTDrnQLsAEyQNBf4HLCDpKkUXyBzKM4gIiKih7q5getY4HW2/wwg6QXAfwEdE7/t/QcpPmmpI4yIiDHVTRv/glbSL/0FWFBRPBERUbEha/yS9ik/zpZ0PnA6RRPNvhR370ZERB/q1NTzxrbP9wLbl58XAkP2v4+IiGXbkInf9rt7GUhERPRGN716NgY+CExpXz7DMkdE9KduevWcQ9Eb5zzgyWrDiYiIqnWT+P9h+z8rjyQiInqim8R/nKTPARcCj7YKbQ87Jn9ERCx7ukn8mwMHAjvydFOPy+mIiOgz3ST+vYHntw/NHBER/aubO3evB9aqOpCIiOiNbmr86wG3SLqaJdv4050zIqIPdZP4P1d5FBER0TPdjMd/aS8CiYiI3ujmzt0HefoZuysBKwIP216jysAiIqIa3dT4V2+flrQXeWRiRETf6qZXzxJsn0P68EdE9K1umnr2aZtcDpjG000/ERHRZ7rp1dM+Lv/jFM/K3bOSaCIionLdtPFnXP6IiHGk06MXP9thPdv+QgXxRERExTrV+B8epGxV4GBgHSCJPyKiD3V69OKxrc+SVgcOB94NnAocO9R6bev8AHgDsMD2y8qytYHTKJ7mNQfYz/b9Iw8/IiKWVsfunJLWlvRF4AaKL4mtbH/S9oIutv0jYLcBZUcCF9veBLi4nI6IiB4aMvFL+hpwNfAgsLntY5amdm77MuC+AcV7AieXn08G9lq6cCMiYrQ61fiPANYHjgbmSXqgfD0o6YER7m892/MByvd1h1pQ0nRJMyXNXLhw4Qh3FxERA3Vq41/qu3rHku0ZwAyAadOm5YaxiIgx0uvkfq+kSQDlezfXCiIiYgz1OvGfCxxUfj4I+GWP9x8R0XiVJX5JpwBXAi+SNFfSwcCXgV0k3QbsUk5HREQPdTNWz4jY3n+IWTtVtc+IiBherRdwIyKi95L4IyIaJok/IqJhkvgjIhomiT8iomGS+CMiGiaJPyKiYZL4IyIaJok/IqJhkvgjIhomiT8iomGS+CMiGiaJPyKiYZL4IyIaJok/IqJhkvgjIhomiT8iomGS+CMiGiaJPyKiYZL4IyIaJok/IqJhkvgjIhpmhTp2KmkO8CDwBPC47Wl1xBER0US1JP7S62wvqnH/ERGNlKaeiIiGqSvxG7hQ0jWSptcUQ0REI9XV1PNq2/MkrQtcJOkW25e1L1B+IUwHmDx5ch0xRkSMS7XU+G3PK98XAGcD2wyyzAzb02xPmzhxYq9DjIgYt3qe+CWtKmn11mdgV+DGXscREdFUdTT1rAecLam1/5/b/nUNcURENFLPE7/tvwBb9Hq/ERFRSHfOiIiGSeKPiGiYJP6IiIZJ4o+IaJgk/oiIhknij4homCT+iIiGSeKPiGiYJP6IiIZJ4o+IaJgk/oiIhknij4homCT+iIiGSeKPiGiYJP6IiIZJ4o+IaJgk/oiIhknij4homCT+iIiGSeKPiGiYJP6IiIZJ4o+IaJgk/oiIhqkl8UvaTdKtkv4s6cg6YoiIaKqeJ35JywPHA7sDmwH7S9qs13FERDRVHTX+bYA/2/6L7X8CpwJ71hBHREQjrVDDPjcA7mqbngu8cuBCkqYD08vJhyTd2oPYRmsCsGgsNyhpLDfXb8b0eB6QYzmmf5sNV8HxrOTv83mDFdaR+Af76fyMAnsGMKP6cMaOpJm2p9Udx3iR4zl2cizHVr8fzzqaeuYCG7VNbwjMqyGOiIhGqiPxXw1sImljSSsBbwPOrSGOiIhG6nlTj+3HJX0A+A2wPPAD27N7HUdF+qppqg/keI6dHMux1dfHU/YzmtcjImIcy527ERENk8QfEdEwSfwREQ2TxB/LHEmr1h1Dv1Nho+GXjCZK4h8Dkl4j6d3l54mSNq47pn4kaTtJNwE3l9NbSPpuzWH1JRe9Ns6pO45+J2ntTq+64xupOu7cHVckfQ6YBrwI+CGwIvBT4NV1xtWnvgn8K+V9Hbavl/TaekPqa3+QtLXtq+sOpI9dQzGygIDJwP3l57WAO4G+rOQl8Y/e3sCWwLUAtudJWr3ekPqX7bsGjE/0RF2xjAOvAw6VNAd4mCJh2fbLa42qj9jeGEDS94BzbZ9fTu8O7FxnbKORxD96/7RtSYa0T4/SXZK2A1ze1f0hymafGJHd6w5gHNna9qGtCdsXSPpCnQGNRtr4R+90SScCa0l6L/Bb4Ps1x9SvDgUOoxjBdS4wtZyOEbB9B8W4WDuWn/9O/udHapGkoyVNkfQ8SZ8GFtcd1Ejlzt0xIGkXYFeKU+nf2L6o5pD6kqSNbN81oOy5tu+pK6Z+1n79yfamktYHzrCd609LqbyQ+zmgdc3pMuDztu+rL6qRS+KPZYakx4EzgPfYfqQsu9b2VvVG1p8kzaK8/mR7y7LshrTxR9r4R0nSPsBXgHUpavytC2hr1BpYf/oT8Hvgckn72b6dip5O0RC5/jRKks5jkOeFtNh+Uw/DGTNJ/KP3VeCNtnMRcvRs+7uSrgfOk/RJOvzTxbAGXn96D7n+tLS+XncAVUhTzyhJ+p+0mY4NSde1NUlMAk4Dptl+dr2R9a9cfxo7ZU+zTcvJW20/Vmc8o5HEP0qSjgOeS3GX5KOtctu/qC2oPiVpku35bdMrANvZvqzGsPqWpI9QXMydW3cs/U7SDsDJwByKL9GNgIP69W8zTT2jtwZFN7ld28oMJPEvvfskvR2YwpJ/m335z7UMWAP4jaT7gFOBM23fW3NM/epYYFfbtwJI2hQ4BXhFrVGNUGr8scyQ9GvgbxS3yT91x67tY2sLahyQ9HLgrcCbgbm2+/aO07oM1huqn3tIpcY/SpI2BL5NMTaPgcuBw3N6PSIb2t6t7iDGoQXAPRQ3HK1bcyz9aqakk4CflNPvoKig9KXcxTd6P6QYVGx9ijtOzyvLYuldIWnzuoMYLyS9T9IlwMXABOC9/VpDXQa8D5gNfJBiKJEbgUNqjWgU0tQzSpJm2Z46XFkMrxyS+YXA/6O4UJ5BxUZB0peBU23PqjuWfiVpT4oz0ePL6T8CEynO7j9h+8w64xupNPWM3iJJ76C40AOwP308hkfNMqjYGGgbJ/6rA6YB6NdhBmryCeBtbdMrUVzQXY3izD6Jv6HeA3yHYix5A1eUZbGUbN8haQvgX8qi39u+vs6Y+lRrDHl45p3PBp7f23D62koDxo+6vPzivK+f74ROU08sMyQdDryXp7vC7g3MsP3t+qKKJpP0Z9svHGLe7bZf0OuYxkIS/whJ+myH2bbdt2N110XSDcCrbD9cTq8KXJk2/qUj6cW2b5E06OB2tq/tdUz9StLPgEtsf39A+SHADrb3ryey0UlTz8g9PEjZqsDBwDpAEv/SE0s+cesJMkjbSHwUmE5x01FLew1vx96G09c+ApxT3ljY+sJ8BfAsYK/aohql1PjHQPmoxcMpkv7pwLG2F9QbVf+R9FHgIODssmgv4Ee2v1VfVP1H0jbAna3nGEg6iOLmrTnAMbm4u/Qk7Qi8tJycbfu/64xntJL4R6HsLfFR4ACKcTyOs31/vVH1t7J54jUUNf3LbF9Xc0h9R9K1wM627ysfVn8qRf/zqcBLbL+l1gCjdmnqGSFJXwP2AWYAm9t+qOaQ+pqk5YAbbL+Mp0+pY2SWb6vVv5XiAvlZwFnlw1mi4XLn7sgdQXG37tHAPEkPlK8HJT1Qc2x9x/aTwPWSJtcdyziwfDmyKcBOQHuzRCp7kT+CkbKdL82xNwmYXd4d+dTF8359ylGNTgEulbQIeITiqWZIeiHFIHjRcGnjj2WGpO0HK7d9aa9j6XeStqX4Ir2wrXvspsBq6c4ZSfyxTJI0AVjs/IFGjLk0V0TtJG0r6RJJv5C0paQbKUY/vFdShmmOGGOp8UftJM0EjgLWpOgltbvtP0h6MXBK6zm8ETE2UuOPZcEKti+0fQZwj+0/ANi+pea4IsalJP5YFjzZ9vmRAfNyShoxxtLUE7WT9ARF900Bq1A8vJ5yemXbK9YVW8R4lMQfEdEwaeqJiGiYJP6IiIZJ4o++I2kdSbPK1z2S7m6bXqmHcWwm6XpJ10maMmDeXEm/G1B249IOkibpp5I6jvvezTIR7TJWT/Qd24sphhhG0jHAQ7a/XkMo+wBndnja2lqS1rc9T9LmwOM9jC1iSKnxx7gh6UuSDmub/oqk90vaWdLvJJ0j6SZJx0tSuczukq6UdK2k0wZ7gLakrSRdJekGSWdJWlPSm4APAIdK+u0QIZ0B7Fd+3p9i8LTWNleQ9A1Jfyy3+29l+XKSvlvGeR4woW2dz0u6ujxz+F7rZ4hYWkn8MZ78X+BdAJKWB/bl6WT7SuDDwObAS4A9Ja0LHAnsZHsr4AaKJ6kN9FPgiPLZv7cCn7F9brm/r9neeYh4zgBaDz3ZA/ivtnnTgQW2twG2Bg4rh6R+C7Ax8DLgfcB2bescZ3vr8mdYE8hwFjEiaeqJccP27eXzEDYHngf80fb9ZcX4D7bnAEg6leIpXwCbAVeUy6wEXN6+TUnrUNxL0Co/GfhJlyEtBB6W9DaKL5V/tM3bFXhJOQ+KRL4J8FqKYSqeBOZKuqRtnZ0kfRxYmeJM4Brggi5jiXhKEn+MNydR1PqnACe2lQ+8YcUUN4j92vaBHbY32uaU04DjgXcMst332754iUJp70FiRdKzge8AW9m+W9IXKb4AIpZamnpivDkLeCPFxd/2tvdtJU0um4D2o6jZXwFsL+n5AJJWlbRJ+8ZsLwIekdRqcjkQWJrnA5wFfBW4aED5b4D3t56UJelFklYBLgPeVrb1bwC0nlGwCsXQFoskrU7x8PSIEUmNP8YV2/+QdBnFYG/tYwBdARwLvBS4BDjXtiUdDJzW1g30KOC2AZs9EDihTMx/Bt69FPH8DfgKwIBrsScCk4FZZfkCYE/gTOB1FMNS30rxRYDtxZJOLsvvAK7qNoaIgTJkQ4wr5UPbZwF72f5LWbYz8AHb6eseQZp6YhwpL+reTtFu/5e644lYVqXGHxHRMKnxR0Q0TBJ/RETDJPFHRDRMEn9ERMMk8UdENEwSf0REw/x/b0ykSmFN8+kAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Graph of objective time medals</span>
+<span class="n">obj_time_medal</span> <span class="o">=</span> <span class="n">OW_df</span><span class="p">[</span><span class="s1">&#39;Obj_time_medal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Objective Time Medals&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">obj_time_medal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Medals&#39;</span><span class="p">)</span>
+<span class="n">obj_time_medal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type of Medal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[79]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 0, &#39;Type of Medal&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Graph of damage medals</span>
+<span class="n">damage_medal</span> <span class="o">=</span> <span class="n">OW_df</span><span class="p">[</span><span class="s1">&#39;Dmg_medal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Damage Medals&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">damage_medal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Medals&#39;</span><span class="p">)</span>
+<span class="n">damage_medal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type of Medal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[82]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 0, &#39;Type of Medal&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Graph of healing medals</span>
+<span class="n">heal_medal</span> <span class="o">=</span> <span class="n">OW_df</span><span class="p">[</span><span class="s1">&#39;Heal_medal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Healing Medals&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">])</span>
+<span class="n">heal_medal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Medals&#39;</span><span class="p">)</span>
+<span class="n">heal_medal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type of Medal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[83]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 0, &#39;Type of Medal&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
 
